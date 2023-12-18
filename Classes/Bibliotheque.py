@@ -92,7 +92,3 @@ class Bibliotheque:
                 print("Veuillez saisir un nombre.")
         # Renvoyer le choix effectué pour utiliser dans une autre méthode
         return choice
-
-if __name__ == '__main__':
-    pysteam = Bibliotheque("pysteam-library.json")
-    pysteam.afficher_menu()
