@@ -1,3 +1,4 @@
+from Classes.Choix import Choix
 class TagsManager:
     def __init__(self):
         self.__liste_tags = list()
@@ -11,7 +12,7 @@ class TagsManager:
             else: print(f"{tag} déjà existant")
 
     def getTags(self):
-        return self.__liste_tags()
+        Choix.lister_options(self.__liste_tags)
 
 class Tags:
     def setName(self, nom : str):

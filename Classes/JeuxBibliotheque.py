@@ -1,6 +1,7 @@
 from Classes.Jeux import Jeux
 from Classes.Sauvegarde import SauvegardeJSON
 from Classes.Tags import Tags, TagsManager
+from Classes.Choix import Choix
 import sys
 
 class Bibliotheque:
@@ -48,8 +49,9 @@ class Bibliotheque:
         self.afficher_menu()
     
     def del_game(self):
+        print("------------- SUPPRIMER UN JEU ------------------")
         # Choisir un jeu dans la liste
-        choice = self.list_games()
+        choice = Choix.lister_options(self.__liste_jeux)
         if(choice <= len(self.__liste_jeux)):
             # Supprimer le jeu choisi
             print(f"Suppression de {self.__liste_jeux[choice-1]}...")
@@ -62,8 +64,9 @@ class Bibliotheque:
         self.afficher_menu()
 
     def inspect_game(self):
+        print("------------- LISTE DES JEUX ------------------")
         # Choisir un jeu dans la liste
-        choice = self.list_games()
+        choice = Choix.lister_options(self.__liste_jeux)
         if(choice <= len(self.__liste_jeux)):
             # Inspecter le jeu choisi
             self.__liste_jeux[choice-1].check_game()
@@ -72,23 +75,3 @@ class Bibliotheque:
 
         # Retour vers le menu
         self.afficher_menu()
-
-    def list_games(self):
-        print("------------- LISTE DES JEUX ------------------")
-
-        # Lister/Enumerer les jeux
-        for index, jeu in enumerate(self.__liste_jeux):
-            print(f"{index+1}. {jeu}")
-
-        # Spécifier l'option pour Quitter/Annuler
-        print(f"{len(self.__liste_jeux)+1}. Quitter")
-        while True:
-            # Choisir un des jeux
-            try:
-                print(f"Choisissez un jeu: [1-{len(self.__liste_jeux)+1}]")
-                choice = int(input())
-                break
-            except ValueError:
-                print("Veuillez saisir un nombre.")
-        # Renvoyer le choix effectué pour utiliser dans une autre méthode
-        return choice
