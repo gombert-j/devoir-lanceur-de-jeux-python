@@ -7,7 +7,7 @@ class Jeux:
 
     def set_tags(self, tags : list):
         self.__tags = tags
-    
+
     def set_img(self, img : str):
         self.__chemin_image = img
 
@@ -16,3 +16,10 @@ class Jeux:
         for tag in self.__tags:
             messageTags += f" - {tag}\n"
         print(f"-----------------------\nNom du jeu: {self}\nTags: {messageTags}\nImage: {self.__chemin_image}")
+
+    def to_dict(self):
+        return {
+            'nom': self.__nom,
+            'tags': self.__tags,
+            'img': self.__chemin_image
+        }

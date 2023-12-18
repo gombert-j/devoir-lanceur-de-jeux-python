@@ -10,8 +10,9 @@ class Bibliotheque:
         self.__tags = TagsManager()
         self.__chemin_bibliotheque = chemin
         self.__storage = SauvegardeJSON()
-        self.__storage.load(self.__chemin_bibliotheque)
-
+        self.__liste_jeux, tags = self.__storage.load(self.__chemin_bibliotheque)
+        self.__tags.set_tags(tags)
+        
     def afficher_menu(self):
         choice = ""
         affichage_options = {1:"Ajouter un jeu", 
@@ -54,11 +55,12 @@ class Bibliotheque:
                 print(f" - {tag}")
             choice = self.__tags.inspect_tags()
             if(choice < len(self.__tags.get_tags())+1 and choice > 0):
-                tag_choisi = self.__tags.get_tags()[choice-1]
+                tag_choisi = self.__tags.get_tags()[choice-1].lower()  # convert to lower case
                 if(tag_choisi not in temp_tags):
                     temp_tags.append(tag_choisi)
                 else:
                     temp_tags.remove(tag_choisi)
+    
         print("Chemin absolu vers l'image: ")
         temp_image = input()
 
@@ -69,6 +71,7 @@ class Bibliotheque:
 
         self.__liste_jeux.append(nouveau_jeu)
         print(f"------------- {nouveau_jeu} ajouté à la liste ---------------")
+        self.save_info()
         self.afficher_menu()
     
     def del_game(self):
@@ -82,8 +85,8 @@ class Bibliotheque:
             print("Jeu supprimé")
         # Annuler/Quitter
         if choice == len(self.__liste_jeux)+1: pass
-
         # Retour vers le menu
+        self.save_info()
         self.afficher_menu()
 
     def inspect_game(self):
@@ -103,6 +106,7 @@ class Bibliotheque:
         print("------------- NOUVEAU TAG ------------------\n Nom du tag: ")
         temp_tag = str(input())
         self.__tags.new_tag(temp_tag)
+        self.save_info()
         self.afficher_menu()
     
     def del_tag(self):
@@ -116,6 +120,7 @@ class Bibliotheque:
             print("Tag supprimé")
         # Annuler/Quitter
         if choice == len(self.__tags.get_tags())+1: pass
+        self.save_info()
         self.afficher_menu()
 
     def inspect_tags(self):
@@ -125,3 +130,6 @@ class Bibliotheque:
         if (not self.__tags.get_tags()):
             print("Pas de tags...")
         self.afficher_menu()
+    
+    def save_info(self):
+        self.__storage.save(self.__chemin_bibliotheque, {'games': [game.to_dict() for game in self.__liste_jeux], 'tags': self.__tags.get_tags()})
