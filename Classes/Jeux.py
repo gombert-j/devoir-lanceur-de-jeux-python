@@ -14,5 +14,5 @@ class Jeux:
     def check_game(self):
         messageTags = ""
         for tag in self.__tags:
-            messageTags += tag
+            messageTags += f" - {tag}\n"
         print(f"-----------------------\nNom du jeu: {self}\nTags: {messageTags}\nImage: {self.__chemin_image}")

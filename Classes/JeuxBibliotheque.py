@@ -39,13 +39,26 @@ class Bibliotheque:
             except ValueError:
                 print("Veuillez saisir un nombre.")
         if((choice >= 1) and (choice <= len(fonctions_options))): fonctions_options[choice]()
-        else: sys.exit()
+        elif (choice > len(fonctions_options)): sys.exit()
 
     def new_game(self):
         print("------------- NOUVEAU JEU ------------------\n Nom du jeu: ")
         temp_nom = input()
-        print("Tags du jeu (séparés par des ';', ex: fun;mignon;multijoueur): ")
-        temp_tags = input().split(";")
+        temp_tags = list()
+        choice = "" 
+        while choice != len(self.__tags.get_tags())+1:
+            print("------------- TAGS ------------------")
+            if(temp_tags):
+                print("Tags actuels:")
+            for tag in temp_tags:
+                print(f" - {tag}")
+            choice = self.__tags.inspect_tags()
+            if(choice < len(self.__tags.get_tags())+1 and choice > 0):
+                tag_choisi = self.__tags.get_tags()[choice-1]
+                if(tag_choisi not in temp_tags):
+                    temp_tags.append(tag_choisi)
+                else:
+                    temp_tags.remove(tag_choisi)
         print("Chemin absolu vers l'image: ")
         temp_image = input()
 
@@ -103,9 +116,12 @@ class Bibliotheque:
             print("Tag supprimé")
         # Annuler/Quitter
         if choice == len(self.__tags.get_tags())+1: pass
+        self.afficher_menu()
 
     def inspect_tags(self):
-        choice = "" 
-        while choice != len(self.__tags.get_tags())+1:
-            choice = self.__tags.inspect_tags()
+        print("------------- LISTE DES TAGS ------------------")
+        for tag in self.__tags.get_tags():
+            print(f" - {tag}")
+        if (not self.__tags.get_tags()):
+            print("Pas de tags...")
         self.afficher_menu()

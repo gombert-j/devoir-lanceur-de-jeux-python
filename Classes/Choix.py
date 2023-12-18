@@ -5,7 +5,7 @@ class Choix():
             print(f"{index+1}. {value}")
 
     # Spécifier l'option pour Quitter/Annuler
-        print(f"{len(temp_liste)+1}. Quitter")
+        print(f"{len(temp_liste)+1}. Confirmer")
         while True:
         # Choisir une des options
             try:
