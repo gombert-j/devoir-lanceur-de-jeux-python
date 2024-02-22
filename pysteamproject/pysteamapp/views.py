@@ -1,8 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 from django.template import loader
-from django.http import HttpResponse, HttpResponseServerError
-from django.views import generic
+from django.http import HttpResponse
 from .models import BibliothequeDeJeux, Jeux
 
 
@@ -15,6 +12,7 @@ def index(request):
     template = loader.get_template('liste_bibliotheques.html')
     context = {'bibliotheques': bibliotheques}
     return HttpResponse(template.render())
+
 
 
 def liste_de_jeux(request):
