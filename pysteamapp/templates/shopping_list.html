@@ -1,0 +1,5 @@
+<ul>
+    {% for item in latest_shop_list %}
+        <li><a href="../shoplist/{{ item.id }}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>
