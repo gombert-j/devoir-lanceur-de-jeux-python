@@ -1,13 +1,13 @@
 from django.template import loader
 from django.http import HttpResponse
-from .models import BibliothequeDeJeux, Jeux
+from .models import Bibliotheque, Jeu
 
 
 # Create your views here.
 
 
 def index(request):
-    bibliotheques = BibliothequeDeJeux.objects.all()
+    bibliotheques = Bibliotheque.objects.all()
     # template loader
     template = loader.get_template('liste_bibliotheques.html')
     context = {'bibliotheques': bibliotheques}
@@ -16,7 +16,7 @@ def index(request):
 
 
 def liste_de_jeux(request):
-    jeux = Jeux.objects.all()
+    jeux = Jeu.objects.all()
     # template loader
     template = loader.get_template('liste_jeux.html')
     # context

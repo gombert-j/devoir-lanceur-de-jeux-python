@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import BibliothequeDeJeux, Jeux
+from .models import Bibliotheque, Jeu
 
-admin.site.register(BibliothequeDeJeux)
-admin.site.register(Jeux)
+admin.site.register(Bibliotheque)
+admin.site.register(Jeu)
