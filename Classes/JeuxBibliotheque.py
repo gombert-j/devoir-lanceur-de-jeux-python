@@ -57,9 +57,9 @@ class Bibliotheque:
             for tag in temp_tags:
                 print(f" - {tag}")
             choice = self.__tags.inspect_tags()
-            if(choice < len(self.__tags.get_tags())+1 and choice > 0):
+            if len(self.__tags.get_tags())+1 > choice > 0:
                 tag_choisi = self.__tags.get_tags()[choice-1].lower()  # convert to lower case
-                if(tag_choisi not in temp_tags):
+                if tag_choisi not in temp_tags:
                     temp_tags.append(tag_choisi)
                 else:
                     temp_tags.remove(tag_choisi)
