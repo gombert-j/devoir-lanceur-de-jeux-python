@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.contrib import admin
+from django.urls import path
+from pysteamapp import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path('', views.index, name='index')
 ]
