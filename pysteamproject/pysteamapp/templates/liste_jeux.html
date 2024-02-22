@@ -1,14 +1,13 @@
 <h1>PySteam</h1>
 <h2>Jeux</h2>
-<a href="bibliotheques/">Retour</a>
+<a href="..">Retour</a>
 <ul>
     {% for jeu in jeux %}
         <li>
-            <a href=r"jeux/{{jeu.id}}" >{{jeu.nom}}</a>
-            <img src="{{jeu.img}}">
-            {% for tag in jeu.tags %}
-                <li>{{tag}}</li>
-            {% endfor %}
+            <a href="jeux/{{jeu.id}}" >{{jeu.nom}}</a>
+            <img src="{{jeu.img}}" height="100" width="100">
+            <!-- tags separated by ; !-->
+            <p>Tags: {{jeu.tags}}</p>
         </li>
     {% endfor %}
 </ul>

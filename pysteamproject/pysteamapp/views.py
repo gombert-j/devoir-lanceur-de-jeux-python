@@ -11,11 +11,10 @@ def index(request):
     # template loader
     template = loader.get_template('liste_bibliotheques.html')
     context = {'bibliotheques': bibliotheques}
-    return HttpResponse(template.render())
+    return HttpResponse(template.render(context, request))
 
 
-
-def liste_de_jeux(request):
+def liste_de_jeux(request, bibliotheque_id):
     jeux = Jeu.objects.all()
     # template loader
     template = loader.get_template('liste_jeux.html')
