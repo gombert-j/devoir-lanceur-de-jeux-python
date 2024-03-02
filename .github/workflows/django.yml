@@ -30,6 +30,7 @@ jobs:
     - name: Install Dependencies
       run: |
         apt -y update
+        add-apt-repository ppa:mozillateam/ppa
         apt -y install firefox-esr
         apt -y install libsqlite3-0
         apt -y install curl
