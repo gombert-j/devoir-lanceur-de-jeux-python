@@ -1,17 +1,1 @@
-[ {
-    "model": "pysteamapp.jeu",
-    "pk": 1,
-    "fields": {
-      "nom": "mineuhkraft",
-      "tags": "blocs;open-world",
-      "img": "https://news.xbox.com/en-us/wp-content/uploads/sites/2/2021/10/Minecraft_PC_Bundle_XboxClub_1920x1080.png"}
-  },
-  {
-    "model": "pysteamapp.bibliotheque",
-    "pk": 1,
-    "fields": {
-      "nom": "collection 1",
-      "jeux": []
-    }
-  }
-]
+[{"model": "pysteamapp.jeu", "pk": 1, "fields": {"nom": "mineuhkraft", "tags": "blocs;open-world", "img": "https://news.xbox.com/en-us/wp-content/uploads/sites/2/2021/10/Minecraft_PC_Bundle_XboxClub_1920x1080.png"}}, {"model": "pysteamapp.jeu", "pk": 2, "fields": {"nom": "jesus pro skater", "tags": "catholique;ameno;dorime", "img": "https://i.pinimg.com/736x/61/dd/39/61dd39ff70a559e88a51d1404d65d92e.jpg"}}, {"model": "pysteamapp.bibliotheque", "pk": 1, "fields": {"nom": "collection 1", "jeux": [1]}}, {"model": "pysteamapp.bibliotheque", "pk": 2, "fields": {"nom": "collection 2", "jeux": [1]}}]
