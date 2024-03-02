@@ -20,14 +20,23 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Set up GeckoDriver
+      uses: browser-actions/setup-geckodriver@v1
+      with:
+        geckodriver-version: 'latest' # Specify the version of GeckoDriver you need
+    - name: Install Firefox
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y firefox-esr
     - name: Install Dependencies
       run: |
         apt -y update
-        apt -y install firefox
         apt -y install libsqlite3-0
         apt -y install curl
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
+    - name: Install Selenium
+      run: pip3.12 install --upgrade selenium
     - name: Migrations
       run: |
         python manage.py makemigrations
