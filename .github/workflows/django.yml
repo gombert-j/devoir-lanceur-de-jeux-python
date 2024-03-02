@@ -35,6 +35,8 @@ jobs:
         apt -y install curl
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
+    - name: Test Firefox
+      run: firefox -headless
     - name: Install Selenium
       run: pip3.12 install --upgrade selenium
     - name: Migrations
