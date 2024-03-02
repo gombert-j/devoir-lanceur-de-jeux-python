@@ -27,13 +27,10 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: Test version GeckoDriver
       run: geckodriver --version
-    - name: Install Firefox
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y firefox-esr
     - name: Install Dependencies
       run: |
         apt -y update
+        apt -y install firefox-esr
         apt -y install libsqlite3-0
         apt -y install curl
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
