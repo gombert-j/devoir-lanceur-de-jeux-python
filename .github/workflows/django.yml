@@ -13,7 +13,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        firefox: [ 'latest-beta', 'latest-devedition', 'latest-nightly', 'latest-esr', 'latest' ]
+        firefox: [ 'latest' ]
         python-version: [3.12]
     steps:
     - uses: actions/checkout@v3
