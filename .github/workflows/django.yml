@@ -25,6 +25,7 @@ jobs:
       uses: browser-actions/setup-geckodriver@latest
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Test version GeckoDriver
       run: geckodriver --version
     - name: Install Firefox
       run: |
