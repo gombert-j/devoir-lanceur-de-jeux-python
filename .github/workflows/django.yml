@@ -34,9 +34,15 @@ jobs:
         apt -y install libsqlite3-0 curl bzip2 libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb binutils fonts-ipafont fonts-ipaexfont
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        cache: 'npm'
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Setup firefox
       id: setup-firefox
-      uses: browser-actions/setup-firefox@v1
+      uses: browser-actions/setup-firefox@latest
       with:
         firefox-version: ${{ matrix.firefox }}
     - name: Install Selenium
