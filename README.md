@@ -3,3 +3,6 @@
 
 - Installer les bibliothèques pip: 
 ```pip install -r requirements.txt```
+
+### Note:
+Le compte junedabat est mon compte alternatif qui était connecté sur mon PC fixe, je sais pas pourquoi PyCharm l'utilise
