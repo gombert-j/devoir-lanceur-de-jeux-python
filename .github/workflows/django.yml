@@ -35,10 +35,11 @@ jobs:
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
     - name: Setup firefox
-      id: setup-firefox
-      uses: browser-actions/setup-firefox@v1
-      with:
-        firefox-version: ${{ matrix.firefox }}
+      run: |
+        wget https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US
+        tar -xjf firefox-*
+        mv firefox /opt/
+        ln -s /opt/firefox/firefox /usr/bin/firefox
     - name: Install Selenium
       run: pip3.12 install --upgrade selenium
     - name: Migrations
