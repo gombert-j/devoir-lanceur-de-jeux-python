@@ -23,6 +23,7 @@ jobs:
     - name: Install Dependencies
       run: |
         apt -y update
+        apt -y install curl
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
     - name: Migrations
