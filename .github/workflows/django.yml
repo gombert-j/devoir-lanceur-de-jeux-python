@@ -20,10 +20,12 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Set up GeckoDriver
-      uses: browser-actions/setup-geckodriver@v1
+
+    - name: Set up GeckoDriver [latest]
+      uses: browser-actions/setup-geckodriver@latest
       with:
-        geckodriver-version: 'latest' # Specify the version of GeckoDriver you need
+        token: ${{ secrets.GITHUB_TOKEN }}
+      run: geckodriver --version
     - name: Install Firefox
       run: |
         sudo apt-get update
