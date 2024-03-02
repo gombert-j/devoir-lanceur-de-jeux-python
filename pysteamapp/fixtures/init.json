@@ -1,0 +1,17 @@
+[ {
+    "model": "pysteamapp.jeu",
+    "pk": 1,
+    "fields": {
+      "nom": "mineuhkraft",
+      "tags": "blocs;open-world",
+      "img": "https://news.xbox.com/en-us/wp-content/uploads/sites/2/2021/10/Minecraft_PC_Bundle_XboxClub_1920x1080.png"}
+  },
+  {
+    "model": "pysteamapp.bibliotheque",
+    "pk": 1,
+    "fields": {
+      "nom": "collection 1",
+      "jeux": []
+    }
+  }
+]

@@ -7,7 +7,6 @@ from pysteamapp.models import Jeu, Bibliotheque
 
 # Create your tests here.
 class JeuTest(TestCase):
-
     # Test si un jeu est bien créé dans la BDD avec le bon nom
     def test_jeu_with_valid_name(self):
         expected_name = 'valid'
