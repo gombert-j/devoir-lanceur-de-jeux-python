@@ -35,10 +35,10 @@ jobs:
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
     - name: Download Firefox
-      run: wget https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US
+      run: wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
     - name: Unpack Firefox
       run: |
-        tar -xjf firefox-*
+        tar -xjf firefox.tar.bz2
         mv firefox /opt/
         ln -s /opt/firefox/firefox /usr/bin/firefox
     - name: Install Selenium
