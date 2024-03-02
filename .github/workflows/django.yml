@@ -31,8 +31,7 @@ jobs:
     - name: Install Dependencies
       run: |
         apt -y update
-        apt -y install libsqlite3-0
-        apt -y install curl
+        apt -y install libsqlite3-0 curl bzip2
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
     - name: Setup firefox
