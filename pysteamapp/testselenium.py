@@ -1,7 +1,7 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from selenium.webdriver.common.by import By
 from selenium import webdriver
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver import FirefoxOptions
 from parameterized import parameterized
 
 
@@ -11,9 +11,9 @@ class MySeleniumTests(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        options = webdriver.FirefoxOptions()
-        options.add_argument("-headless")
-        cls.selenium = WebDriver(options=options)
+        options = FirefoxOptions()
+        options.add_argument("--headless")
+        cls.selenium = webdriver.Firefox(options=options)
         cls.selenium.implicitly_wait(2)
 
     @classmethod
