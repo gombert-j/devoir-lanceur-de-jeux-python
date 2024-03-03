@@ -47,8 +47,5 @@ jobs:
         python manage.py check
     - name: Run Tests
       run: |
-        python manage.py test
-    - name: Run Server & Run Selenium Tests
-      run: |
         python manage.py runserver
-        python manage.py test pysteamapp.testselenium
+        python manage.py test
