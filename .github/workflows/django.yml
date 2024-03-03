@@ -34,5 +34,5 @@ jobs:
         python manage.py check
     - name: Run Tests
       run: |
-        python manage.py test pysteamapp.test
+        python manage.py test pysteamapp.tests
         python manage.py test pysteamapp.testviews
