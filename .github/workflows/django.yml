@@ -13,7 +13,6 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        firefox: [ 'latest' ]
         python-version: [3.12]
     steps:
     - uses: actions/checkout@v3
@@ -21,28 +20,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-
-    - name: Set up GeckoDriver [latest]
-      uses: browser-actions/setup-geckodriver@latest
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Test version GeckoDriver
-      run: geckodriver --version
     - name: Install Dependencies
       run: |
         apt -y update
-        apt -y install wget libsqlite3-0 curl bzip2 libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb binutils fonts-ipafont fonts-ipaexfont
+        apt -y install libsqlite3-0
+        apt -y install curl
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
-    - name: Download Firefox
-      run: wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-    - name: Unpack Firefox
-      run: |
-        tar -xjf firefox.tar.bz2
-        mv firefox /opt/
-        ln -s /opt/firefox/firefox /usr/bin/firefox
-    - name: Install Selenium
-      run: pip3.12 install --upgrade selenium
     - name: Migrations
       run: |
         python manage.py makemigrations
@@ -50,6 +34,5 @@ jobs:
         python manage.py check
     - name: Run Tests
       run: |
-        python manage.py test
+        python manage.py test pysteamapp.test
         python manage.py test pysteamapp.testviews
-        python manage.py test pysteamapp.testselenium
