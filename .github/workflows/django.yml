@@ -34,19 +34,22 @@ jobs:
         apt -y install wget libsqlite3-0 curl bzip2 libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb binutils fonts-ipafont fonts-ipaexfont
         curl -sS https://bootstrap.pypa.io/get-pip.py | python
         pip3.12 install -r requirements.txt
-    - name: Setup Firefox
+    - name: Download Firefox
+      run: wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
+    - name: Unpack Firefox
       run: |
-        wget -O firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
         tar -xjf firefox.tar.bz2
         mv firefox /opt/
         ln -s /opt/firefox/firefox /usr/bin/firefox
+    - name: Install Selenium
+      run: pip3.12 install --upgrade selenium
     - name: Migrations
       run: |
         python manage.py makemigrations
         python manage.py migrate
         python manage.py check
-
-    - name: Run headless test
-      uses: GabrielBB/xvfb-action@v1
-      with:
-        run: python manage.py test
+    - name: Run Tests
+      run: |
+        python manage.py test
+        python manage.py test pysteamapp.testviews
+        python manage.py test pysteamapp.testselenium

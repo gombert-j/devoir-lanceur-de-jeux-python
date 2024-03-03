@@ -2,7 +2,6 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.firefox.webdriver import WebDriver
-
 from parameterized import parameterized
 
 
