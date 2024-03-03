@@ -40,8 +40,6 @@ jobs:
         tar -xjf firefox.tar.bz2
         mv firefox /opt/
         ln -s /opt/firefox/firefox /usr/bin/firefox
-    - name: Install Selenium
-      run: pip3.12 install --upgrade selenium
     - name: Migrations
       run: |
         python manage.py makemigrations
@@ -50,8 +48,7 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
-        python manage.py test pysteamapp.testviews
-    - name: Run Selenium Tests
+    - name: Run Server & Run Selenium Tests
       run: |
         python manage.py runserver
         python manage.py test pysteamapp.testselenium
